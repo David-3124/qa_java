@@ -9,7 +9,7 @@ public class ParameterizedAnimalTest {
     Feline feline = new Feline();
 
     @ParameterizedTest
-    @ValueSource(ints = {27, 20, 1, 5, 10})
+    @ValueSource(ints = {0, 1, 10, 100, -1})
     public void getKittensRandomCountFeline(int kittensCount) {
         assertEquals(kittensCount, feline.getKittens(kittensCount));
     }

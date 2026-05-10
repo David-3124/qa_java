@@ -8,8 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class LionTest {
@@ -19,7 +18,7 @@ public class LionTest {
 
     @Test
     public void LionGetFood() throws Exception {
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion(feline, "Самец");
 
         when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
@@ -27,37 +26,36 @@ public class LionTest {
     }
 
     @Test
-    public void doesHaveManeFalse(){
-        Lion lion = new Lion(feline);
+    public void doesHaveManeFalse() throws Exception {
+        Lion lion = new Lion(feline, "Самка");
 
         assertFalse(lion.doesHaveMane());
     }
 
     @Test
     public void genderMaleLion () throws Exception {
-        Lion lion = new Lion("Самец");
+        Lion lion = new Lion(new Feline(), "Самец");
 
         assertTrue(lion.doesHaveMane());
     }
 
     @Test
     public void genderFemaleLion () throws Exception {
-        Lion lion = new Lion("Самка");
+        Lion lion = new Lion(new Feline(), "Самка");
 
         assertFalse(lion.doesHaveMane());
     }
 
     @Test
     public void unknownGenderLion () throws Exception {
-        assertThrows(Exception.class, () -> new Lion("Львицы"));
+        assertThrows(Exception.class, () -> new Lion(new Feline(),"Львицы"));
     }
 
     @Test
-    public void getKittensFeline() {
-        Lion lion = new Lion(feline);
+    public void getKittensFeline() throws Exception {
+        Lion lion = new Lion(feline, "Самец");
 
         when(feline.getKittens()).thenReturn(5);
         assertEquals(5, lion.getKittens());
     }
-
 }
