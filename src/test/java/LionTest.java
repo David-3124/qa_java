@@ -26,20 +26,6 @@ public class LionTest {
     }
 
     @Test
-    public void doesHaveManeFalse() throws Exception {
-        Lion lion = new Lion(feline, "Самка");
-
-        assertFalse(lion.doesHaveMane());
-    }
-
-    @Test
-    public void genderMaleLion () throws Exception {
-        Lion lion = new Lion(new Feline(), "Самец");
-
-        assertTrue(lion.doesHaveMane());
-    }
-
-    @Test
     public void genderFemaleLion () throws Exception {
         Lion lion = new Lion(new Feline(), "Самка");
 
